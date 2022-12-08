@@ -33,6 +33,9 @@ import { getRPCPollTime, Transactor, Web3ModalSetup } from "./helpers";
 import { Home, ExampleUI, Hints, Subgraph } from "./views";
 import { useStaticJsonRPC } from "./hooks";
 
+import { AvatarViewer, AvatarMinter } from "./components";
+
+
 const { ethers } = require("ethers");
 /*
     Welcome to 🏗 scaffold-eth !
@@ -254,6 +257,15 @@ function App(props) {
 
   const faucetAvailable = localProvider && localProvider.connection && targetNetwork.name.indexOf("local") !== -1;
 
+  const callSetURI = async (newURI) => {
+    tx(writeContracts.YourCollectible.setURI(newURI));
+  }
+
+  const callMintMultiple = async (amount) => {
+    console.log(address, amount);
+    tx(writeContracts.YourCollectible.mintMultiple(address, amount));
+  }
+
   return (
     <div className="App">
       {/* ✏️ Edit the header and change the title to your project name */}
@@ -300,6 +312,17 @@ function App(props) {
         <Menu.Item key="/">
           <Link to="/">App Home</Link>
         </Menu.Item>
+
+        <Menu.Item key="/avatarviewer">
+          <Link to="/avatarviewer">Viewer</Link>
+        </Menu.Item>
+        <Menu.Item key="/randomizer">
+          <Link to="/randomizer">Randomizer</Link>
+        </Menu.Item>
+        <Menu.Item key="/avatarminter">
+          <Link to="/avatarminter">Minter</Link>
+        </Menu.Item>
+
         <Menu.Item key="/debug">
           <Link to="/debug">Debug Contracts</Link>
         </Menu.Item>
@@ -322,6 +345,20 @@ function App(props) {
           {/* pass in any web3 props to this Home component. For example, yourLocalBalance */}
           <Home yourLocalBalance={yourLocalBalance} readContracts={readContracts} />
         </Route>
+
+        <Route path="/avatarviewer">
+            <AvatarViewer />
+          </Route>
+
+          <Route path="/randomizer">
+            <AvatarMinter callSetURI={callSetURI} callMintMultiple={callMintMultiple}/>
+          </Route>
+
+
+          <Route path="/avatarminter">
+            <AvatarMinter callSetURI={callSetURI} callMintMultiple={callMintMultiple}/>
+          </Route>
+                  
         <Route exact path="/debug">
           {/*
                 🎛 this scaffolding is full of commonly used components

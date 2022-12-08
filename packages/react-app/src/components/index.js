@@ -24,3 +24,5 @@ export { default as FaucetHint } from "./FaucetHint";
 export { default as NetworkSwitch } from "./NetworkSwitch";
 export { default as MultiAddressInput } from "./MultiAddressInput";
 export { default as TokenSelect } from "./TokenSelect";
+export { default as AvatarViewer } from "./AvatarViewer";
+export { default as AvatarMinter } from "./AvatarMinter";
