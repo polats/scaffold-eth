@@ -208,9 +208,14 @@ export default function AvatarViewer() {
             const reader = new FileReader();
             reader.readAsArrayBuffer(file);
             reader.onload = loadEvent => {
+
+                var filename = file.name.split(".")[0];
+                console.log("=== READING ");
+                console.log(filename);
+
                 currentFile = new Blob([loadEvent.target.result], { type: "application/octet-stream" });
-                //reloadConfig(currentFile);
-                getAvatar(currentFile);
+                // reloadConfig(currentFile);
+                getAvatar(currentFile, filename);
             };
         }
     }

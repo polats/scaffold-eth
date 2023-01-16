@@ -169,7 +169,7 @@ const useAvatar = props => {
       const loadedFile = await fetch(`avatars/${fileName}.ora`).then(r => r.blob());
       await project.load(loadedFile);
     } else {
-      console.log("Loading specified file");
+      console.log("== Loading specified file");
       console.log(originalFileName);
       console.log(fileLocation);
       await loadRarities(originalFileName);
@@ -180,6 +180,9 @@ const useAvatar = props => {
   const loadRarities = async fileName => {
     let raritiesJson = null;
     const fullFileName = `${fileName}.json`;
+
+    console.log("loading " + fullFileName);
+
     try {
       raritiesJson = await fetch(`avatars/${fullFileName}`).then(r => r.json());
     } catch (err) {
@@ -314,18 +317,18 @@ const useAvatar = props => {
     setRandomConfig(currentRandomConfig);
   };
 
-  const getAvatar = async getParam => {
+  const getAvatar = async (getParam, fileName) => {
     currentRandomConfig = { Root: {} };
 
-    console.log("getAvatar", getParam);
-    await loadProject(getParam);
+    console.log("getAvatar", getParam, fileName);
+    await loadProject(getParam, fileName);
     await getBaseClasses(); // reinits
 
     rend = new jsora.Renderer(project);
     await getAvatarConfiguration(project);
     await hideLayersRecursively(project, "Root");
-    await randomizeHiddenParts();
     setRandomConfig(currentRandomConfig);
+    await randomizeHiddenParts();
     await drawAvatar();
 
     setLootText(tempLootText);
