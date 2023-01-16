@@ -15,7 +15,7 @@ jobs:
     runs-on: ubuntu-latest
     defaults:
       run:
-        working-directory: ./packages/react-app    
+        working-directory: packages/react-app    
     steps:
       - name: compile frontend
         run: yarn build
