@@ -16,9 +16,11 @@ jobs:
     defaults:
       run:
         working-directory: packages/react-app    
-    steps:      
-      - name: compile frontend
+    steps:
+      - name: checkout code
         uses: actions/checkout@v3    
+      
+      - name: compile frontend
         run: yarn build
 
       - name: Deploy to arcadians-animator.surge.sh
