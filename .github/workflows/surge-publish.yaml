@@ -21,9 +21,6 @@ jobs:
       - name: install modules
         run: yarn install
 
-      - name: compile contract
-        run: yarn compile
-
       - name: compile frontend
         run: yarn build
 
