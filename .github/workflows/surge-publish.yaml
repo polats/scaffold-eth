@@ -13,6 +13,7 @@ jobs:
 
     name: Publish on Surge
     runs-on: ubuntu-latest
+    working-directory: ./packages/react-app
     steps:
       - name: compile frontend
         run: yarn build
@@ -21,6 +22,6 @@ jobs:
         uses: dswistowski/surge-sh-action@v1
         with:
           domain: 'arcadians-animator.surge.sh'
-          project: 'packages/react-app/build'
+          project: './build'
           login: ${{ secrets.surge_login }}
           token: ${{ secrets.surge_token }}
