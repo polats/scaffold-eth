@@ -11,12 +11,12 @@ on:
 jobs:
   surge-publish:
 
-    name: compile frontend
-    run: yarn build
-
     name: Publish on Surge
     runs-on: ubuntu-latest
     steps:
+      - name: compile frontend
+        run: yarn build
+
       - name: Deploy to arcadians-animator.surge.sh
         uses: dswistowski/surge-sh-action@v1
         with:
