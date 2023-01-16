@@ -17,6 +17,9 @@ jobs:
       run:
         working-directory: packages/react-app    
     steps:
+      - name: checkout code
+      - uses: actions/checkout@v2    
+      
       - name: compile frontend
         run: yarn build
 
