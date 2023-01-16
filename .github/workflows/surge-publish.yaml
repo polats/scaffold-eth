@@ -13,7 +13,9 @@ jobs:
 
     name: Publish on Surge
     runs-on: ubuntu-latest
-    working-directory: ./packages/react-app
+    defaults:
+      run:
+        working-directory: ./frontend    
     steps:
       - name: compile frontend
         run: yarn build
