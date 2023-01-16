@@ -1,16 +1,26 @@
 name: 
 
-on: push
+on:
+  push:
+    branches:
+      - generative-avatars
+  pull_request:
+    branches:
+      - generative-avatars
 
 jobs:
   surge-publish:
+
+    name: compile frontend
+    run: yarn build
+
     name: Publish on Surge
     runs-on: ubuntu-latest
     steps:
-      - name: Deploy to foo-bar.surge.sh
+      - name: Deploy to arcadians-animator.surge.sh
         uses: dswistowski/surge-sh-action@v1
         with:
           domain: 'arcadians-animator.surge.sh'
-          project: '.'
+          project: 'packages/react-app/build'
           login: ${{ secrets.surge_login }}
           token: ${{ secrets.surge_token }}
