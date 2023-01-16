@@ -19,6 +19,9 @@ jobs:
     steps:
       - name: checkout code
         uses: actions/checkout@v3    
+
+      - name: install modules
+        run: yarn install
       
       - name: compile frontend
         run: yarn build
