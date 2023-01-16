@@ -1,0 +1,16 @@
+name: 
+
+on: push
+
+jobs:
+  surge-publish:
+    name: Publish on Surge
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy to foo-bar.surge.sh
+        uses: dswistowski/surge-sh-action@v1
+        with:
+          domain: 'arcadians-animator.surge.sh'
+          project: '.'
+          login: ${{ secrets.surge_login }}
+          token: ${{ secrets.surge_token }}
