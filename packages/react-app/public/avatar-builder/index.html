@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="style.css">
+		<script src="https://cdn.babylonjs.com/babylon.js"></script>
+		<script src="https://cdn.babylonjs.com/materialsLibrary/babylonjs.materials.min.js"></script>
+		<script src="https://cdn.babylonjs.com/loaders/babylonjs.loaders.min.js"></script>
+		<script src="https://cdn.babylonjs.com/gui/babylon.gui.min.js"></script>
+		<script src="https://cdn.babylonjs.com/inspector/babylon.inspector.bundle.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.0/FileSaver.js"></script>
+		<script src="https://unpkg.com/merge-images"></script>
+	</head>
+
+	<body>
+		<div>
+			<h2>Animations</h2>
+			<div id="animations">
+				<!-- added dynamically in partsLoader -->
+			</div>
+
+			<h2>Gender</h2>
+			<div id="gender">
+				<!-- added dynamically in index.js -->
+			</div>
+
+			<h2>Parts</h2>
+			<div id="parts">
+				<!-- added dynamically in partsLoader -->
+			</div>
+
+			<br />
+			<button onclick="createSpritesheet()">Create Spritesheet</button>
+			<br /><br />
+		</div>
+
+		<div>
+			<canvas id="renderCanvas"></canvas>
+		</div>
+
+		<script src="src/config.js"></script>
+		<script src="src/screenshotHandler.js"></script>
+		<script src="src/keyboardHandler.js"></script>
+		<script src="src/partsLoader.js"></script>
+		<script src="src/index.js"></script>
+
+		<footer>
+			<br />
+			<a href="index.html">V1 demo</a><br />
+			<a href="v2.html">V2 demo</a><br />
+			<a href="ui-parts-picker.html">Parts picker V1 demo</a><br />
+			<a href="ui-parts-picker-v2.html">Parts picker V2 demo</a><br />
+			<a href="test-avatar-canvas.html">Canvas avatar demo</a>
+		</footer>
+	</body>
+</html>
